@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
         @GetMapping("/")
         public String home() {
             System.out.println("rry4353r");
-            System.out.println("gdgdg");
+
             return "home";
         }
 }
