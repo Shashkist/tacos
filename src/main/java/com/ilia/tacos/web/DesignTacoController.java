@@ -8,8 +8,10 @@ import com.ilia.tacos.Ingredient;
 import com.ilia.tacos.TacoOrder;
 import com.ilia.tacos.Taco;
 import com.ilia.tacos.Ingredient.Type;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,8 +53,9 @@ public class DesignTacoController {
     }
 
     @ModelAttribute(name = "taco")
-    public Taco taco() {
-        return new Taco();
+    public Taco taco(Taco taco) {
+        Taco taco1 = new Taco();
+        return taco1;
     }
 
     @GetMapping
@@ -61,8 +64,11 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(Taco taco,
+    public String processTaco(@Valid Taco taco, Errors errors,
                               @ModelAttribute TacoOrder tacoOrder) {
+        if (errors.hasErrors()) {
+            return "design";
+        }
         tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
         return "redirect:/orders/current";
