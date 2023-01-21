@@ -7,5 +7,8 @@
 <body>
 <h1>Welcome ...</h1>
 <img th:src="@{/images/images.jpg}"/>
+<form th:action="@{/redirect-to-design}" th:object="${form}" method="get">
+    <button type="submit">Go to Design</button>
+</form>
 </body>
 </html>
