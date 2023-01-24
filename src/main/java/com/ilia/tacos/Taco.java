@@ -26,8 +26,11 @@ public class Taco {
 
     @NotNull
     @Size(min=1, message="You must choose at least 1 ingredient")
-    @ManyToMany(cascade = CascadeType.ALL)
-    @Transient
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+            name="taco_ingredient",
+            joinColumns=@JoinColumn(name="taco_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="ingredient_id", referencedColumnName="id"))
     private List<Ingredient> ingredients;
 
 
