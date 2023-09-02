@@ -51,7 +51,12 @@ public class SecurityConfig {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/design");
+                .defaultSuccessUrl("/design")
+                .and()
+                .logout()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/");
 
         return http.build();
     }
