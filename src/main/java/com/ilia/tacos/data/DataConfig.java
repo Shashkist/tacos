@@ -24,11 +24,12 @@ public class DataConfig {
             repo.save(new Ingredient("JACK", "Monterrey Jack", Type.CHEESE));
             repo.save(new Ingredient("SLSA", "Salsa", Type.SAUCE));
             repo.save(new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
+            repo.save(new Ingredient("KTHC", "ketchup", Type.SAUCE));
         };
     }
 
-    @Bean
-    public DataSource dataSource() {
-        return DataSourceBuilder.create().url("jdbc:h2:mem:tacocloud").build();
-    }
+//    @Bean
+//    public DataSource dataSource() {
+//        return DataSourceBuilder.create().url("jdbc:h2:mem:tacocloud").build();
+//    }
 }
