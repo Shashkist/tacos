@@ -7,8 +7,9 @@
 <body>
     <h1>Login</h1>
     <img th:src="@{/images/TacoCloud.png}"/>
-    <div th:if="${error}">
-        Unable to login. Check your username and password.
+    <div th:if="${param.error}">
+        <h4>Unable to login.Error: .</h4><span th:text="${param.error}"></span>
+           <h5> Check your username and password</h5>
     </div>
     <p>New here? Click
         <a th:href="@{/register}">here</a> to register.
