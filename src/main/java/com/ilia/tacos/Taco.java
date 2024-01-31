@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -26,12 +27,12 @@ public class Taco {
 
     @NotNull
     @Size(min=1, message="You must choose at least 1 ingredient")
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(
             name="taco_ingredient",
             joinColumns=@JoinColumn(name="taco_id", referencedColumnName="id"),
             inverseJoinColumns=@JoinColumn(name="ingredient_id", referencedColumnName="id"))
-    private List<Ingredient> ingredients;
+    private List<Ingredient> ingredients = new ArrayList<>();
 
 
     public void addIngredient(Ingredient ingredient) {
